@@ -133,9 +133,9 @@ export default {
       dialogVisible: false,
       fileList: [],
       permission: {
-        add: ['', 'faceAttendance:add'],
-        edit: ['', 'faceAttendance:edit'],
-        del: ['', 'faceAttendance:del']
+        add: ['admin', 'faceAttendance:add'],
+        edit: ['admin', 'faceAttendance:edit'],
+        del: ['admin', 'faceAttendance:del']
       },
       rules: {},
       queryTypeOptions: [

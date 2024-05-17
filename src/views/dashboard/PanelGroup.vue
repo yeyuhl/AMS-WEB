@@ -9,7 +9,7 @@
           <div class="card-panel-text">
             注册用户数
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="678" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -22,7 +22,33 @@
           <div class="card-panel-text">
             考勤记录数
           </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="10384" :duration="3000" class="card-panel-num" />
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('whiteList')">
+        <div class="card-panel-icon-wrapper icon-white">
+          <svg-icon icon-class="whiteList" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            白名单
+          </div>
+          <count-to :start-val="0" :end-val="678" :duration="3000" class="card-panel-num" />
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('blackList')">
+        <div class="card-panel-icon-wrapper icon-black">
+          <svg-icon icon-class="blackList" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            黑名单
+          </div>
+          <count-to :start-val="0" :end-val="42" :duration="3000" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -69,36 +95,36 @@ export default {
       }
 
       .icon-people {
-        background: #40c9c6;
+        background: #36a3f7;
       }
 
       .icon-message {
         background: #36a3f7;
       }
 
-      .icon-money {
-        background: #f4516c;
+      .icon-white {
+        background: #36a3f7;
       }
 
-      .icon-shopping {
-        background: #34bfa3
+      .icon-black {
+        background: #36a3f7
       }
     }
 
     .icon-people {
-      color: #40c9c6;
+      color: #36a3f7;
     }
 
     .icon-message {
       color: #36a3f7;
     }
 
-    .icon-money {
-      color: #f4516c;
+    .icon-white {
+      color: #36a3f7;
     }
 
-    .icon-shopping {
-      color: #34bfa3
+    .icon-black {
+      color: #36a3f7
     }
 
     .card-panel-icon-wrapper {

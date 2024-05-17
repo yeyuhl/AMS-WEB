@@ -46,12 +46,6 @@
           <el-form-item label="黑名单" prop="type">
             <el-input v-model="form.type" style="width: 370px;"/>
           </el-form-item>
-          <el-form-item label="文件名" prop="fileName">
-            <template v-slot="scope">
-              <el-input v-model="fileName" style="width: 370px;"/>
-              <div slot="tip" class="el-upload__tip">文件名要和身份码一致</div>
-            </template>
-          </el-form-item>
           <el-form-item label="上传">
             <template v-slot="scope">
               <el-upload
@@ -173,7 +167,6 @@ export default {
   data() {
     return {
       headers: {'Authorization': getToken()},
-      fileName: '',
       fileList: [],
       csvList: [],
       dialogVisible: false,
@@ -211,8 +204,8 @@ export default {
     uploadImage(content) {
       let formData = new FormData()
       formData.append('file', content.file)
-      formData.append('fileName', this.fileName)
-      let url = 'http://localhost:8000/api/faceRegister/uploadImages'
+      formData.append('fileName', this.form.personId)
+      let url = 'http://localhost:8000/api/faceRegister/uploadImage'
       axios.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -220,6 +213,7 @@ export default {
         }
       }).then(res => {
         this.crud.notify('上传成功', CRUD.NOTIFICATION_TYPE.SUCCESS)
+        this.fileList = []
         this.updateImageUrl(res)
       }).catch(err => {
         this.crud.notify(err.response.data, CRUD.NOTIFICATION_TYPE.ERROR)
@@ -244,7 +238,10 @@ export default {
     },
     updateImageUrl(res) {
       let newFormData = new FormData()
-      newFormData.append('str', res.data)
+      let path = res.data
+      let fileName = path.split('/').pop();
+      newFormData.append('path', path)
+      newFormData.append('fileName', fileName)
       let url = 'http://localhost:8000/api/faceRegister/updateImageUrl'
       axios.post(url, newFormData, {
         headers: {
@@ -258,12 +255,8 @@ export default {
       })
     },
     manualUpload1() {
-      //let len = this.$refs['upload1'].$children[0].fileList.length
-      let len2 = this.$refs['upload2'].$children[0].fileList.length
-      // if (len) {
-      //   this.$refs.upload1.submit()
-      // }
-      if (len2) {
+      let len = this.$refs['upload2'].$children[0].fileList.length
+      if (len) {
         this.$refs.upload2.submit()
       }
       this.csvList = []

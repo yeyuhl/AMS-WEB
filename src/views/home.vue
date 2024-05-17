@@ -13,16 +13,33 @@
 import PanelGroup from './dashboard/PanelGroup'
 import LineChart from './dashboard/LineChart'
 
-const defaultForm = { id: null, username: null, nickName: null, gender: '男', email: null, enabled: 'false', roles: [], jobs: [], dept: { id: null }, phone: null }
+const defaultForm = {
+  id: null,
+  username: null,
+  nickName: null,
+  gender: '男',
+  email: null,
+  enabled: 'false',
+  roles: [],
+  jobs: [],
+  dept: {id: null},
+  phone: null
+}
 
 
 const lineChartData = {
   user: {
-    actualData: [120, 82, 91, 154, 162, 140, 145]
+    actualData: [5, 10, 0, 0, 0, 20, 0]
   },
   record: {
-    actualData: [180, 160, 151, 106, 145, 150, 130]
+    actualData: [1180, 1640, 1521, 1046, 1475, 1850, 1320]
   },
+  whiteList: {
+    actualData: [5, 10, 0, 0, 0, 20, 0]
+  },
+  blackList: {
+    actualData: [0, 0, 0, 1, 0, 0, 0]
+  }
 }
 
 export default {
